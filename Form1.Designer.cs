@@ -50,6 +50,9 @@
             label12 = new Label();
             label5 = new Label();
             dataGridView2 = new DataGridView();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             contextMenuStrip2 = new ContextMenuStrip(components);
             toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
@@ -72,9 +75,6 @@
             toolStripMenuItem5 = new ToolStripMenuItem();
             toolStripMenuItem6 = new ToolStripMenuItem();
             button2 = new Button();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
@@ -295,6 +295,22 @@
             dataGridView2.Enter += dataGridView2_Enter;
             dataGridView2.Leave += dataGridView2_Leave;
             // 
+            // Column8
+            // 
+            Column8.HeaderText = "#";
+            Column8.Name = "Column8";
+            Column8.Width = 50;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Nombre Completo";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Correo-E";
+            Column5.Name = "Column5";
+            // 
             // contextMenuStrip2
             // 
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
@@ -504,7 +520,6 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button2.Enabled = false;
             button2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = Properties.Resources.cell_clear;
             button2.ImageAlign = ContentAlignment.MiddleRight;
@@ -517,22 +532,6 @@
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "#";
-            Column8.Name = "Column8";
-            Column8.Width = 50;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Nombre Completo";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Correo-E";
-            Column5.Name = "Column5";
             // 
             // Form1
             // 
