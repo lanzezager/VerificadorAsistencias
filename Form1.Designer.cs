@@ -75,6 +75,7 @@
             toolStripMenuItem5 = new ToolStripMenuItem();
             toolStripMenuItem6 = new ToolStripMenuItem();
             button2 = new Button();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
@@ -533,11 +534,23 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.Font = new Font("Arial Unicode MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(276, 521);
+            label1.Name = "label1";
+            label1.Size = new Size(246, 25);
+            label1.TabIndex = 14;
+            label1.Text = "[By Lanze Zager]";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 561);
+            Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(menuStrip1);
             Controls.Add(label9);
@@ -617,5 +630,6 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private Label label1;
     }
 }

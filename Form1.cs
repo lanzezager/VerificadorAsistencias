@@ -220,7 +220,7 @@ namespace VerificadorCoincidencias
             System.Data.DataTable dt = new System.Data.DataTable();
             int num = 0;
 
-            dt.Columns.Add("#",num.GetType());
+            dt.Columns.Add("#", num.GetType());
 
             for (int i = 0; i < original.Columns.Count; i++)
             {
@@ -965,13 +965,34 @@ namespace VerificadorCoincidencias
             dataGridView2.DataSource = null;
             dataGridView2.Columns.Clear();
             dataGridView2.Rows.Clear();
-            label5.Text = "Registros: 0";   
+            label5.Text = "Registros: 0";
+            dataGridView2.Enabled = false;
 
             dataGridView3.DataSource = null;
             dataGridView3.Columns.Clear();
             dataGridView3.Rows.Clear();
             label10.Text = "Registros: 0";
-            
+            dataGridView3.Enabled = false;
+
+            button1.Enabled = false;
+            button6.Enabled = false;
+
+            label7.Text = "???";
+            label9.Text = "???";
+
+            dataGridView1.Columns.Add("num", "#");
+            dataGridView1.Columns["num"].Width = 50;
+            dataGridView1.Columns.Add("nombres", "Nombre(s)");
+            dataGridView1.Columns.Add("apellidos", "Apellido(s)");
+            dataGridView1.Columns.Add("correo", "Correo-E");
+
+            dataGridView2.Columns.Add("num", "#");
+            dataGridView2.Columns["num"].Width = 50;
+            dataGridView2.Columns.Add("nombres", "Nombre Completo");
+            dataGridView2.Columns.Add("correo", "Correo-E");
+
+            dataGridView3.Columns.Add("num", "#");
+            dataGridView3.Columns["num"].Width = 50;
         }
 
     }
