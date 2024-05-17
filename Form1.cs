@@ -218,8 +218,9 @@ namespace VerificadorCoincidencias
         {
 
             System.Data.DataTable dt = new System.Data.DataTable();
+            int num = 0;
 
-            dt.Columns.Add("#");
+            dt.Columns.Add("#",num.GetType());
 
             for (int i = 0; i < original.Columns.Count; i++)
             {
