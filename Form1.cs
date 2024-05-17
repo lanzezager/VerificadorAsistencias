@@ -960,16 +960,18 @@ namespace VerificadorCoincidencias
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
             label4.Text = "Registros: 0";
+            dataGridView1.Focus();
 
             dataGridView2.DataSource = null;
             dataGridView2.Columns.Clear();
             dataGridView2.Rows.Clear();
-            label5.Text = "Registros: 0";
+            label5.Text = "Registros: 0";   
 
             dataGridView3.DataSource = null;
             dataGridView3.Columns.Clear();
             dataGridView3.Rows.Clear();
             label10.Text = "Registros: 0";
+            
         }
 
     }
