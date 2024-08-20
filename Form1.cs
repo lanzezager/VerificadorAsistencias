@@ -126,7 +126,7 @@ namespace VerificadorCoincidencias
         private System.Data.DataTable adaptarDataTable(string datos, int num_grid)
         {
             System.Data.DataTable dt = new System.Data.DataTable();
-            int totfilas = 0, totColumnas = 0;
+            int totfilas = 0, totColumnas = 0, tipo_col_apell = 0, tipo_mins = 0;
             string letra = "";
 
             for (int i = 0; i < datos.Length; i++)
@@ -150,28 +150,86 @@ namespace VerificadorCoincidencias
             listLineas = datos.Split("\r\n");
             linea = listLineas[0].Split("\t");
 
+            //Obtener tipo col Apellidos
+            if (radioButton1.Checked)
+            {
+                tipo_col_apell = 2;
+            }
+            else
+            {
+                if (radioButton2.Checked)
+                {
+                    tipo_col_apell = 1;
+                }
+            }
+
+            //Obtener tipo col minutos
+            if (checkBox1.Checked)
+            {
+                tipo_mins = 1;
+            }
+            else
+            {
+                tipo_mins = 0;
+            }
+
             if (num_grid == 1)
             {
-                for (int i = 0; i < linea.Length; i++)
+                if (tipo_col_apell == 1)
                 {
-                    if (i == 0)
+                    for (int i = 0; i < linea.Length; i++)
                     {
-                        dt.Columns.Add("Nombre(s)");
-                    }
 
-                    if (i == 1)
-                    {
-                        dt.Columns.Add("Apellido(s)");
-                    }
+                        if (i == 0)
+                        {
+                            dt.Columns.Add("Nombre(s)");
+                        }
 
-                    if (i == 2)
-                    {
-                        dt.Columns.Add("Correo-E");
-                    }
+                        if (i == 1)
+                        {
+                            dt.Columns.Add("Apellido(s)");
+                        }
 
-                    if (i > 2)
+                        if (i == 2)
+                        {
+                            dt.Columns.Add("Correo-E");
+                        }
+
+                        if (i > 2)
+                        {
+                            dt.Columns.Add("COLUMNA_" + (i + 1));
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < linea.Length; i++)
                     {
-                        dt.Columns.Add("COLUMNA_" + (i + 1));
+
+                        if (i == 0)
+                        {
+                            dt.Columns.Add("Nombre(s)");
+                        }
+
+                        if (i == 1)
+                        {
+                            dt.Columns.Add("Primer Apellido");
+                        }
+
+                        if (i == 2)
+                        {
+                            dt.Columns.Add("Segundo Apellido");
+                        }
+
+                        if (i == 3)
+                        {
+                            dt.Columns.Add("Correo-E");
+                        }
+
+                        if (i > 3)
+                        {
+                            dt.Columns.Add("COLUMNA_" + (i + 1));
+                        }
                     }
                 }
             }
@@ -180,20 +238,46 @@ namespace VerificadorCoincidencias
             {
                 for (int i = 0; i < linea.Length; i++)
                 {
-                    if (i == 0)
+                    if (tipo_mins == 0)
                     {
-                        dt.Columns.Add("Nombre Completo");
+                        if (i == 0)
+                        {
+                            dt.Columns.Add("Nombre Completo");
+                        }
+
+                        if (i == 1)
+                        {
+                            dt.Columns.Add("Correo-E");
+                        }
+
+                        if (i > 1)
+                        {
+                            dt.Columns.Add("COLUMNA_" + (i + 1));
+                        }
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            dt.Columns.Add("Nombre Completo");
+                        }
+
+                        if (i == 1)
+                        {
+                            dt.Columns.Add("Correo-E");
+                        }
+
+                        if (i == 2)
+                        {
+                            dt.Columns.Add("Minutos Totales");
+                        }
+
+                        if (i > 2)
+                        {
+                            dt.Columns.Add("COLUMNA_" + (i + 1));
+                        }
                     }
 
-                    if (i == 1)
-                    {
-                        dt.Columns.Add("Correo-E");
-                    }
-
-                    if (i > 1)
-                    {
-                        dt.Columns.Add("COLUMNA_" + (i + 1));
-                    }
                 }
             }
 
@@ -249,8 +333,8 @@ namespace VerificadorCoincidencias
 
         private void proceso_verificar()
         {
-            string aux = "", correoE = "", tipo_verif = "", variante1 = "", variante2 = "", variante3 = "", variante4 = "", variante5 = "", variante6 = "";
-            int coincide = 0, coincideCompara = 0, tot_coincidencia = 0, segu = 0;
+            string aux = "", correoE = "", tipo_verif = "", variante1 = "", variante2 = "", variante3 = "", variante4 = "", variante5 = "", variante6 = "", num_mins = "0";
+            int coincide = 0, coincideCompara = 0, tot_coincidencia = 0, segu = 0, tipo_col_apell = 0, tipo_mins = 0, minimo_asis = 0, tot_asis = 0;
 
             string[] nombreDividido = new string[5];
             string[] apellidoDividido = new string[5];
@@ -263,6 +347,30 @@ namespace VerificadorCoincidencias
             tablaCompara = dataGridView2.DataSource as System.Data.DataTable;
 
             tablaResultado = tablaBase.Copy();
+
+            //Obtener tipo col Apellidos
+            if (radioButton1.Checked)
+            {
+                tipo_col_apell = 2;
+            }
+            else
+            {
+                if (radioButton2.Checked)
+                {
+                    tipo_col_apell = 1;
+                }
+            }
+
+            //Obtener tipo col minutos
+            if (checkBox1.Checked)
+            {
+                tipo_mins = 1;
+                minimo_asis = int.Parse(numericUpDown1.Value.ToString());
+            }
+            else
+            {
+                tipo_mins = 0;
+            }
 
             //estandarizar textos
             for (int i = 0; i < tablaResultado.Rows.Count; i++)
@@ -292,6 +400,14 @@ namespace VerificadorCoincidencias
                 tablaResultado.Columns.Add("ASISTENCIA");
             }
 
+            if (tipo_mins == 1)
+            {
+                if (tablaResultado.Columns.Contains("ASISTENCIA_TIEMPO") == false)
+                {
+                    tablaResultado.Columns.Add("ASISTENCIA_TIEMPO");
+                }
+            }
+
             if (tablaResultado.Columns.Contains("TIPO_VERIFICACION") == false)
             {
                 tablaResultado.Columns.Add("TIPO_VERIFICACION");
@@ -307,18 +423,34 @@ namespace VerificadorCoincidencias
                 tablaCompara.Columns.Add("TIPO_VERIFICACION");
             }
 
+            if (tipo_mins == 1)
+            {
+                if (tablaResultado.Columns.Contains("Minutos Totales") == false)
+                {
+                    tablaResultado.Columns.Add("Minutos Totales");
+                }
+
+                for (int i = 0; i < tablaResultado.Rows.Count; i++)
+                {
+                    tablaResultado.Rows[i]["Minutos Totales"] = "0";
+                    tablaResultado.Rows[i]["ASISTENCIA_TIEMPO"] = "0";
+                }
+            }
+
             for (int i = 0; i < tablaCompara.Rows.Count; i++)
             {
                 tablaCompara.Rows[i]["ENCONTRADO"] = "0";
             }
 
             tot_coincidencia = 0;
+            tot_asis = 0;
 
             //buscar coincidencias
             for (int i = 0; i < tablaResultado.Rows.Count; i++)
             {
                 aux = "";
                 segu = 0;
+                num_mins = "0";
                 nombreDividido = null;
                 apellidoDividido = null;
                 correoE = "";
@@ -334,21 +466,43 @@ namespace VerificadorCoincidencias
                 {
                     aux = tablaResultado.Rows[i][j].ToString();
 
-                    if (j == 1)
+                    if (tipo_col_apell == 1)
                     {
-                        nombreDividido = aux.Split(' ');
+                        if (j == 1)
+                        {
+                            nombreDividido = aux.Split(' ');
+                        }
+
+                        if (j == 2)
+                        {
+                            apellidoDividido = aux.Split(' ');
+                        }
+
+                        if (j == 3)
+                        {
+                            correoE = aux;
+                        }
                     }
 
-                    if (j == 2)
+                    if (tipo_col_apell == 2)
                     {
-                        apellidoDividido = aux.Split(' ');
-                    }
+                        if (j == 1)
+                        {
+                            nombreDividido = aux.Split(' ');
+                        }
 
-                    if (j == 3)
-                    {
-                        correoE = aux;
+                        if (j == 2)
+                        {
+                            apellidoDividido = aux.Split(' ');
+                        }
+
+                        if (j == 4)
+                        {
+                            correoE = aux;
+                        }
                     }
                 }
+
                 //obtener nombre separado
                 for (int l = 0; l < nombreDividido.Length; l++)
                 {
@@ -377,6 +531,7 @@ namespace VerificadorCoincidencias
                         }
                     }
                 }
+
                 //obtener apellido separado
                 for (int m = 0; m < apellidoDividido.Length; m++)
                 {
@@ -386,11 +541,24 @@ namespace VerificadorCoincidencias
                         variante3 += apellidoDividido[m] + " ";//apellidos completos
                         variante5 += apellidoDividido[m] + " ";//apellidos completos
 
-                        if (m == 0)
+                        if (tipo_col_apell == 1)
                         {
-                            variante2 += apellidoDividido[m];//primer apellido
-                            variante4 += apellidoDividido[m];//primer apellido
-                            variante6 += apellidoDividido[m];//primer apellido
+                            if (m == 0)
+                            {
+                                variante2 += apellidoDividido[m];//primer apellido
+                                variante4 += apellidoDividido[m];//primer apellido
+                                variante6 += apellidoDividido[m];//primer apellido
+                            }
+                        }
+                        else
+                        {
+                            if (tipo_col_apell == 2)
+                            {
+                                variante2 += apellidoDividido[m];//primer apellido
+                                variante4 += apellidoDividido[m];//primer apellido
+                                variante6 += apellidoDividido[m];//primer apellido
+                            }
+
                         }
                     }
                 }
@@ -423,6 +591,11 @@ namespace VerificadorCoincidencias
                             tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                             tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                             coincideCompara = 0;
+
+                            if (tipo_mins == 1)
+                            {
+                                num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                            }
                         }
                     }
                 }
@@ -447,6 +620,11 @@ namespace VerificadorCoincidencias
                                 tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                                 tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                                 coincideCompara = 0;
+
+                                if (tipo_mins == 1)
+                                {
+                                    num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                                }
                             }
                         }
                     }
@@ -472,6 +650,11 @@ namespace VerificadorCoincidencias
                                 tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                                 tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                                 coincideCompara = 0;
+
+                                if (tipo_mins == 1)
+                                {
+                                    num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                                }
                             }
                         }
                     }
@@ -497,6 +680,11 @@ namespace VerificadorCoincidencias
                                 tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                                 tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                                 coincideCompara = 0;
+
+                                if (tipo_mins == 1)
+                                {
+                                    num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                                }
                             }
                         }
                     }
@@ -522,6 +710,11 @@ namespace VerificadorCoincidencias
                                 tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                                 tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                                 coincideCompara = 0;
+
+                                if (tipo_mins == 1)
+                                {
+                                    num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                                }
                             }
                         }
                     }
@@ -547,6 +740,11 @@ namespace VerificadorCoincidencias
                                 tablaCompara.Rows[k]["ENCONTRADO"] = coincideCompara.ToString();
                                 tablaCompara.Rows[k]["TIPO_VERIFICACION"] = tipo_verif;
                                 coincideCompara = 0;
+
+                                if (tipo_mins == 1)
+                                {
+                                    num_mins = tablaCompara.Rows[k]["Minutos Totales"].ToString();
+                                }
                             }
                         }
                     }
@@ -612,8 +810,30 @@ namespace VerificadorCoincidencias
 
                 if (coincide == 1)
                 {
-                    tot_coincidencia++;
                     tablaResultado.Rows[i]["TIPO_VERIFICACION"] = tipo_verif;
+
+                    if (tipo_mins == 1)
+                    {
+                        tablaResultado.Rows[i]["Minutos Totales"] = num_mins;
+                        int tot_min_asis = 0;
+
+                        if (int.TryParse(num_mins, out tot_min_asis))
+                        {
+                            if (tot_min_asis >= minimo_asis)
+                            {
+                                tot_asis++;
+                                tablaResultado.Rows[i]["ASISTENCIA_TIEMPO"] = 1;
+                            }
+                            else
+                            {
+                                tablaResultado.Rows[i]["ASISTENCIA_TIEMPO"] = 0;
+                            }
+                        }
+
+
+                    }
+
+                    tot_coincidencia++;
                 }
                 else
                 {
@@ -633,7 +853,15 @@ namespace VerificadorCoincidencias
             label9.Text = tablaResultado.Rows.Count.ToString();
             label10.Text = "Registros: " + dataGridView3.RowCount;
 
-            MessageBox.Show("Comparación Terminada\n" + tot_coincidencia + "/" + tablaResultado.Rows.Count + " Asistencias Encontradas", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (tipo_mins == 1)
+            {
+                MessageBox.Show("Comparación Terminada\n" + tot_coincidencia + "/" + tablaResultado.Rows.Count + " Asistencias Encontradas\n" + tot_asis + " Asistencias de acuerdo al tiempo Mínimo", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Comparación Terminada\n" + tot_coincidencia + "/" + tablaResultado.Rows.Count + " Asistencias Encontradas", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private string normalizar_texto(string texto)
@@ -956,17 +1184,10 @@ namespace VerificadorCoincidencias
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.Columns.Clear();
-            dataGridView1.Rows.Clear();
-            label4.Text = "Registros: 0";
-            dataGridView1.Focus();
+            limpiar_dgv1();
+            separados_dgv1();
 
-            dataGridView2.DataSource = null;
-            dataGridView2.Columns.Clear();
-            dataGridView2.Rows.Clear();
-            label5.Text = "Registros: 0";
-            dataGridView2.Enabled = false;
+            limpiar_dgv2();
 
             dataGridView3.DataSource = null;
             dataGridView3.Columns.Clear();
@@ -980,19 +1201,101 @@ namespace VerificadorCoincidencias
             label7.Text = "???";
             label9.Text = "???";
 
+            dataGridView3.Columns.Add("num", "#");
+            dataGridView3.Columns["num"].Width = 50;
+
+            radioButton1.Checked = true;
+            radioButton2.Checked = false;
+
+            checkBox1.Checked = false;
+            numericUpDown1.Value = 0;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            limpiar_dgv1();
+            separados_dgv1();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            limpiar_dgv1();
+            combinados_dgv1();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            limpiar_dgv2();
+
+            if (checkBox1.Checked == true)
+            {
+                numericUpDown1.Enabled = true;
+                con_minutos();
+            }
+            else
+            {
+                numericUpDown1.Enabled = false;
+                sin_minutos();
+            }
+        }
+
+        private void limpiar_dgv1()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();
+            dataGridView1.Rows.Clear();
+            label4.Text = "Registros: 0";
+            dataGridView1.Focus();
+        }
+
+        private void separados_dgv1()
+        {
+            dataGridView1.Columns.Add("num", "#");
+            dataGridView1.Columns["num"].Width = 50;
+            dataGridView1.Columns.Add("nombres", "Nombre(s)");
+            dataGridView1.Columns.Add("pri_apellido", "Primer Apellido");
+            dataGridView1.Columns.Add("seg_apellido", "Segundo Apellido");
+            dataGridView1.Columns.Add("correo", "Correo-E");
+        }
+
+        private void combinados_dgv1()
+        {
             dataGridView1.Columns.Add("num", "#");
             dataGridView1.Columns["num"].Width = 50;
             dataGridView1.Columns.Add("nombres", "Nombre(s)");
             dataGridView1.Columns.Add("apellidos", "Apellido(s)");
             dataGridView1.Columns.Add("correo", "Correo-E");
+        }
 
+        private void limpiar_dgv2()
+        {
+            dataGridView2.DataSource = null;
+            dataGridView2.Columns.Clear();
+            dataGridView2.Rows.Clear();
+            label5.Text = "Registros: 0";
+            //dataGridView2.Enabled = false;
+        }
+
+        private void sin_minutos()
+        {
             dataGridView2.Columns.Add("num", "#");
             dataGridView2.Columns["num"].Width = 50;
             dataGridView2.Columns.Add("nombres", "Nombre Completo");
             dataGridView2.Columns.Add("correo", "Correo-E");
+        }
 
-            dataGridView3.Columns.Add("num", "#");
-            dataGridView3.Columns["num"].Width = 50;
+        private void con_minutos()
+        {
+            dataGridView2.Columns.Add("num", "#");
+            dataGridView2.Columns["num"].Width = 50;
+            dataGridView2.Columns.Add("nombres", "Nombre Completo");
+            dataGridView2.Columns.Add("correo", "Correo-E");
+            dataGridView2.Columns.Add("minutos", "Minutos Totales");
         }
 
     }

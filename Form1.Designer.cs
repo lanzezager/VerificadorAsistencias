@@ -37,16 +37,23 @@
             groupBox1 = new GroupBox();
             splitContainer2 = new SplitContainer();
             splitContainer1 = new SplitContainer();
+            groupBox2 = new GroupBox();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             label11 = new Label();
             label4 = new Label();
             dataGridView1 = new DataGridView();
             Column7 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             contextMenuStrip1 = new ContextMenuStrip(components);
             pegarToolStripMenuItem = new ToolStripMenuItem();
             copiarToolStripMenuItem = new ToolStripMenuItem();
+            label2 = new Label();
+            numericUpDown1 = new NumericUpDown();
+            checkBox1 = new CheckBox();
             label12 = new Label();
             label5 = new Label();
             dataGridView2 = new DataGridView();
@@ -85,8 +92,10 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -139,6 +148,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.BackColor = SystemColors.Control;
+            splitContainer1.Panel1.Controls.Add(groupBox2);
             splitContainer1.Panel1.Controls.Add(label11);
             splitContainer1.Panel1.Controls.Add(label4);
             splitContainer1.Panel1.Controls.Add(dataGridView1);
@@ -146,12 +156,54 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = SystemColors.Control;
+            splitContainer1.Panel2.Controls.Add(label2);
+            splitContainer1.Panel2.Controls.Add(numericUpDown1);
+            splitContainer1.Panel2.Controls.Add(checkBox1);
             splitContainer1.Panel2.Controls.Add(label12);
             splitContainer1.Panel2.Controls.Add(label5);
             splitContainer1.Panel2.Controls.Add(dataGridView2);
             splitContainer1.Size = new Size(514, 461);
             splitContainer1.SplitterDistance = 256;
             splitContainer1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Anchor = AnchorStyles.Bottom;
+            groupBox2.Controls.Add(radioButton2);
+            groupBox2.Controls.Add(radioButton1);
+            groupBox2.Location = new Point(13, 362);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(225, 69);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Columnas de Apelllidos";
+            toolTip1.SetToolTip(groupBox2, "Separados: Tanto el primer como el segundo se encuentran en columnas SEPARADAS\r\nCombinados: Los apellidos se encuentran en UNA sola columna");
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton2.Location = new Point(17, 43);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(106, 19);
+            radioButton2.TabIndex = 5;
+            radioButton2.Text = "Combinados";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
+            radioButton1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton1.Location = new Point(17, 18);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(95, 19);
+            radioButton1.TabIndex = 4;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Separados";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // label11
             // 
@@ -188,7 +240,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column7, Column1, Column2, Column3 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column7, Column1, Column2, Column9, Column3 });
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
             dataGridView1.Location = new Point(3, 46);
             dataGridView1.Name = "dataGridView1";
@@ -201,7 +253,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(248, 384);
+            dataGridView1.Size = new Size(248, 310);
             dataGridView1.TabIndex = 0;
             dataGridView1.Enter += dataGridView1_Enter;
             dataGridView1.Leave += dataGridView1_Leave;
@@ -219,8 +271,13 @@
             // 
             // Column2
             // 
-            Column2.HeaderText = "Apellido(s)";
+            Column2.HeaderText = "Primer Apellido";
             Column2.Name = "Column2";
+            // 
+            // Column9
+            // 
+            Column9.HeaderText = "Segundo Apellido";
+            Column9.Name = "Column9";
             // 
             // Column3
             // 
@@ -248,6 +305,42 @@
             copiarToolStripMenuItem.Size = new Size(109, 22);
             copiarToolStripMenuItem.Text = "Copiar";
             copiarToolStripMenuItem.Visible = false;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Bottom;
+            label2.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(3, 384);
+            label2.Name = "label2";
+            label2.Size = new Size(246, 19);
+            label2.TabIndex = 6;
+            label2.Text = "Mínimo para Asistencia:";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Anchor = AnchorStyles.Bottom;
+            numericUpDown1.Enabled = false;
+            numericUpDown1.Font = new Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown1.Location = new Point(95, 406);
+            numericUpDown1.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(54, 25);
+            numericUpDown1.TabIndex = 5;
+            numericUpDown1.TextAlign = HorizontalAlignment.Center;
+            // 
+            // checkBox1
+            // 
+            checkBox1.Anchor = AnchorStyles.Bottom;
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox1.Location = new Point(34, 362);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(188, 19);
+            checkBox1.TabIndex = 4;
+            checkBox1.Text = "Incluir Minutos en Sesión";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // label12
             // 
@@ -290,7 +383,7 @@
             dataGridView2.Location = new Point(3, 46);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(246, 384);
+            dataGridView2.Size = new Size(246, 310);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             dataGridView2.Enter += dataGridView2_Enter;
@@ -494,6 +587,7 @@
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.Visible = false;
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // coparToolStripMenuItem
             // 
@@ -536,14 +630,14 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.Anchor = AnchorStyles.Bottom;
             label1.Font = new Font("Arial Unicode MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(276, 521);
+            label1.Location = new Point(276, 504);
             label1.Name = "label1";
-            label1.Size = new Size(246, 25);
+            label1.Size = new Size(246, 46);
             label1.TabIndex = 14;
-            label1.Text = "[By Lanze Zager]";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Text = "[By Lanze Zager]\r\n[Ver 2.0]";
+            label1.TextAlign = ContentAlignment.BottomCenter;
             // 
             // Form1
             // 
@@ -573,10 +667,14 @@
             splitContainer2.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
@@ -631,5 +729,12 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private Label label1;
+        private GroupBox groupBox2;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private CheckBox checkBox1;
+        private Label label2;
+        private NumericUpDown numericUpDown1;
+        private DataGridViewTextBoxColumn Column9;
     }
 }
