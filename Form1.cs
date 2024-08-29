@@ -1,6 +1,7 @@
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Windows.Forms;
 using static ClosedXML.Excel.XLPredefinedFormat;
@@ -496,6 +497,11 @@ namespace VerificadorCoincidencias
                             apellidoDividido = aux.Split(' ');
                         }
 
+                        if (j == 3)
+                        {
+                            apellidoDividido = apellidoDividido.Concat(aux.Split(' ')).ToArray();
+                        }
+
                         if (j == 4)
                         {
                             correoE = aux;
@@ -554,9 +560,12 @@ namespace VerificadorCoincidencias
                         {
                             if (tipo_col_apell == 2)
                             {
-                                variante2 += apellidoDividido[m];//primer apellido
-                                variante4 += apellidoDividido[m];//primer apellido
-                                variante6 += apellidoDividido[m];//primer apellido
+                                if (m == 0)
+                                {
+                                    variante2 += apellidoDividido[m];//primer apellido
+                                    variante4 += apellidoDividido[m];//primer apellido
+                                    variante6 += apellidoDividido[m];//primer apellido
+                                }
                             }
 
                         }
