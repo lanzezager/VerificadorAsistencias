@@ -182,7 +182,7 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton2.Font = new Font("Arial Rounded MT Bold", 9.75F);
             radioButton2.Location = new Point(17, 43);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(106, 19);
@@ -195,7 +195,7 @@
             // 
             radioButton1.AutoSize = true;
             radioButton1.Checked = true;
-            radioButton1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             radioButton1.Location = new Point(17, 18);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(95, 19);
@@ -208,7 +208,7 @@
             // label11
             // 
             label11.Anchor = AnchorStyles.Top;
-            label11.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Font = new Font("Arial", 9.75F);
             label11.Location = new Point(3, 4);
             label11.Name = "label11";
             label11.Size = new Size(248, 39);
@@ -219,7 +219,7 @@
             // label4
             // 
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label4.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label4.Location = new Point(3, 434);
             label4.Name = "label4";
             label4.Size = new Size(248, 25);
@@ -233,7 +233,7 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.Window;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -246,13 +246,12 @@
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = SystemColors.Window;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(248, 310);
             dataGridView1.TabIndex = 0;
             dataGridView1.Enter += dataGridView1_Enter;
@@ -309,7 +308,7 @@
             // label2
             // 
             label2.Anchor = AnchorStyles.Bottom;
-            label2.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Arial", 9.75F);
             label2.Location = new Point(3, 384);
             label2.Name = "label2";
             label2.Size = new Size(246, 19);
@@ -321,7 +320,7 @@
             // 
             numericUpDown1.Anchor = AnchorStyles.Bottom;
             numericUpDown1.Enabled = false;
-            numericUpDown1.Font = new Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown1.Font = new Font("Arial Rounded MT Bold", 11.25F);
             numericUpDown1.Location = new Point(95, 406);
             numericUpDown1.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -333,7 +332,7 @@
             // 
             checkBox1.Anchor = AnchorStyles.Bottom;
             checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             checkBox1.Location = new Point(34, 362);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(188, 19);
@@ -345,7 +344,7 @@
             // label12
             // 
             label12.Anchor = AnchorStyles.Top;
-            label12.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Font = new Font("Arial", 9.75F);
             label12.Location = new Point(3, 4);
             label12.Name = "label12";
             label12.Size = new Size(246, 39);
@@ -356,7 +355,7 @@
             // label5
             // 
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label5.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label5.Location = new Point(3, 433);
             label5.Name = "label5";
             label5.Size = new Size(246, 26);
@@ -370,7 +369,7 @@
             dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.Window;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -382,7 +381,6 @@
             dataGridView2.Enabled = false;
             dataGridView2.Location = new Point(3, 46);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
             dataGridView2.Size = new Size(246, 310);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
@@ -430,7 +428,7 @@
             // label13
             // 
             label13.Anchor = AnchorStyles.Top;
-            label13.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Font = new Font("Arial", 9.75F);
             label13.Location = new Point(3, 4);
             label13.Name = "label13";
             label13.Size = new Size(249, 39);
@@ -441,7 +439,7 @@
             // label10
             // 
             label10.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label10.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label10.Location = new Point(3, 433);
             label10.Name = "label10";
             label10.Size = new Size(248, 25);
@@ -455,7 +453,7 @@
             dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle4.ForeColor = SystemColors.Window;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
@@ -467,7 +465,6 @@
             dataGridView3.Enabled = false;
             dataGridView3.Location = new Point(3, 46);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowTemplate.Height = 25;
             dataGridView3.Size = new Size(249, 384);
             dataGridView3.TabIndex = 2;
             dataGridView3.Enter += dataGridView3_Enter;
@@ -506,7 +503,7 @@
             // 
             button6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button6.Enabled = false;
-            button6.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.Font = new Font("Arial", 12F, FontStyle.Bold);
             button6.Image = Properties.Resources.excel_exports_32;
             button6.Location = new Point(738, 503);
             button6.Name = "button6";
@@ -521,7 +518,7 @@
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button1.Enabled = false;
-            button1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Font = new Font("Arial", 12F, FontStyle.Bold);
             button1.Image = Properties.Resources.compare;
             button1.ImageAlign = ContentAlignment.MiddleRight;
             button1.Location = new Point(12, 504);
@@ -537,7 +534,7 @@
             // label6
             // 
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label6.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Arial", 11.25F, FontStyle.Bold);
             label6.Location = new Point(534, 494);
             label6.Name = "label6";
             label6.Size = new Size(198, 23);
@@ -548,7 +545,7 @@
             // label7
             // 
             label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label7.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Font = new Font("Arial", 11.25F, FontStyle.Bold);
             label7.Location = new Point(534, 517);
             label7.Name = "label7";
             label7.Size = new Size(70, 23);
@@ -559,7 +556,7 @@
             // label8
             // 
             label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label8.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Font = new Font("Arial", 11.25F, FontStyle.Bold);
             label8.Location = new Point(613, 517);
             label8.Name = "label8";
             label8.Size = new Size(42, 23);
@@ -570,7 +567,7 @@
             // label9
             // 
             label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label9.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Font = new Font("Arial", 11.25F, FontStyle.Bold);
             label9.Location = new Point(662, 517);
             label9.Name = "label9";
             label9.Size = new Size(70, 23);
@@ -615,7 +612,7 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             button2.Image = Properties.Resources.cell_clear;
             button2.ImageAlign = ContentAlignment.MiddleRight;
             button2.Location = new Point(171, 517);
@@ -631,12 +628,12 @@
             // label1
             // 
             label1.Anchor = AnchorStyles.Bottom;
-            label1.Font = new Font("Arial Unicode MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Arial Unicode MS", 8.25F);
             label1.Location = new Point(276, 504);
             label1.Name = "label1";
             label1.Size = new Size(246, 46);
             label1.TabIndex = 14;
-            label1.Text = "[By Lanze Zager]\r\n[Ver 2.0]";
+            label1.Text = "[By Lanze Zager]\r\n[Ver 2.1]";
             label1.TextAlign = ContentAlignment.BottomCenter;
             // 
             // Form1
